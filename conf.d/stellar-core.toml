@@ -1,0 +1,7 @@
+[template]
+src = "stellar-core.cfg.tmpl"
+dest = "/etc/stellar-core.cfg"
+
+keys = [
+  "/stellar/core",
+]
