@@ -3,18 +3,6 @@ FROM gzigzigzeo/docker-download-confd as confd
 
 # ===============================================
 
-# FROM alpine:latest AS build
-
-# ARG STELLAR_CORE_VERSION="0.6.4"
-
-# RUN apk add --no-cache git pkgconfig postgresql-dev bison flex libtool autoconf automake g++ make linux-headers file
-
-# RUN cd /tmp && git clone https://github.com/stellar/stellar-core.git --branch v0.6.4 --single-branch
-# RUN cd /tmp/stellar-core && git tag -l
-# RUN cd /tmp/stellar-core && git checkout tags/v0.6.4 && git submodule init && git submodule update
-# RUN cd /tmp/stellar-core && ./autogen.sh && ./configure
-# RUN cd /tmp/stellar-core && make && make check && make install
-
 FROM debian:jessie AS build
 
 ENV STELLAR_CORE_VERSION "0.6.3-391-708237b0"
