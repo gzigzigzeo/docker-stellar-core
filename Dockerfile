@@ -11,13 +11,13 @@ ENV STELLAR_DEB_URL "https://s3.amazonaws.com/stellar.org/releases/stellar-core/
 RUN apt-get update && apt-get install -y curl git libpq-dev libsqlite3-dev libsasl2-dev postgresql-client vim zlib1g-dev && apt-get clean
 
 # Installation
-RUN curl -o stellar-core.deb $STELLAR_DEB_URL \
+RUN curl -f -L -o stellar-core.deb $STELLAR_DEB_URL \
  && dpkg -i stellar-core.deb \
  && rm stellar-core.deb
 
 # ===============================================
 
-FROM debian:jessie
+FROM debian:jessie-slim
 
 MAINTAINER Viktor Sokolov <gzigzigzeo@evilmartians.com>
 
@@ -26,7 +26,18 @@ ENV STELLAR_CORE_PEER_PORT 11625
 ENV STELLAR_CORE_HTTP_PORT 11626
 
 # Dependencies
-RUN apt-get update && apt-get -y install curl ca-certificates postgresql-client bash && apt-get clean
+RUN mkdir -p /usr/share/man/ \
+  && mkdir -p /usr/share/man/man1 \
+  && mkdir -p /usr/share/man/man2 \
+  && mkdir -p /usr/share/man/man3 \
+  && mkdir -p /usr/share/man/man4 \
+  && mkdir -p /usr/share/man/man5 \
+  && mkdir -p /usr/share/man/man6 \
+  && mkdir -p /usr/share/man/man7 \
+  && mkdir -p /usr/share/man/man8 \
+  && mkdir -p /usr/share/man/man9
+
+RUN apt-get update && apt-get -y --no-install-recommends install curl ca-certificates sqlite3 postgresql-client bash && apt-get clean
 
 # Confd
 COPY --from=confd /usr/local/bin/confd /usr/local/bin/confd
