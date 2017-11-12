@@ -49,8 +49,9 @@ COPY conf.d /etc/confd/conf.d/
 COPY --from=build /usr/local/bin/stellar-core /usr/local/bin/stellar-core
 RUN mkdir -p /var/stellar/core/testnet && mkdir -p /var/stellar/core/pubnet
 
-# Helathcheck & Entrypoint
-# healthcheck.sh /
+# Scripts
+COPY docker_healthcheck.sh /
+RUN chmod +x /docker_healthcheck.sh
 
 COPY docker_entrypoint.sh /
 RUN chmod +x /docker_entrypoint.sh
@@ -58,3 +59,5 @@ RUN chmod +x /docker_entrypoint.sh
 ENTRYPOINT ["/docker_entrypoint.sh"]
 CMD ["stellar-core", "--conf", "/etc/stellar-core.cfg"]
 EXPOSE ${STELLAR_CORE_HTTP_PORT} ${STELLAR_CORE_PEER_PORT}
+
+HEALTHCHECK CMD ["/docker_healthcheck.sh"]
