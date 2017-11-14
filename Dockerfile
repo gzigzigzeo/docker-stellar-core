@@ -24,6 +24,7 @@ MAINTAINER Viktor Sokolov <gzigzigzeo@evilmartians.com>
 ENV STELLAR_CORE_DATABASE_URL "user=gzigzigzeo host=docker.for.mac.localhost dbname=core"
 ENV STELLAR_CORE_PEER_PORT 11625
 ENV STELLAR_CORE_HTTP_PORT 11626
+ENV STELLAR_CORE_BASE_PATH "/var/stellar/core"
 
 # Dependencies
 RUN mkdir -p /usr/share/man/ \
