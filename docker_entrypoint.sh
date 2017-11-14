@@ -6,12 +6,11 @@ set -o pipefail
 
 if psql "$STELLAR_CORE_DATABASE_URL" -c "\dt" | grep "No relations" > /dev/null; then
 	stellar-core --conf /etc/stellar-core.cfg --newdb
-	stellar-core --conf /etc/stellar-core.cfg --newhist cache
 fi
 
 if [[ ! -e "$STELLAR_CORE_BASE_PATH/history-cache/vs/.well-known/stellar-history.json" ]]; then
   echo "newhist: ok"
-  stellar-core --newhist cache --conf $STELLAR_CONFIG
+  stellar-core --newhist cache --conf /etc/stellar-core.cfg
 fi
 
 exec "$@"
