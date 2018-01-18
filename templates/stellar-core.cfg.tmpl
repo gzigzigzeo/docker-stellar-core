@@ -5,7 +5,7 @@ PEER_PORT={{getv "/stellar/core/peer/port"}}
 BUCKET_DIR_PATH="{{ getv "/stellar/core/base/path" }}/buckets"
 PUBLIC_HTTP_PORT=true # By default (false) accepts connection from localhost only, not our case (other container)
 HTTP_MAX_CLIENT=128
-COMMANDS=["ll?level=info"]
+COMMANDS=["ll?level=info&dropcursor?id=HORIZON&maintenance?queue=true"]
 NETWORK_PASSPHRASE="Test SDF Network ; September 2015"
 TARGET_PEER_CONNECTIONS=8
 MAX_PEER_CONNECTIONS=12
@@ -21,9 +21,8 @@ NODE_IS_VALIDATOR=false
 FAILURE_SAFETY=1
 UNSAFE_QUORUM=true
 
-CATCHUP_COMPLETE=true
-# CATCHUP_RECENT=8640
-MAX_CONCURRENT_SUBPROCESSES=20
+CATCHUP_RECENT=512
+MAX_CONCURRENT_SUBPROCESSES=32
 RUN_STANDALONE=false
 MANUAL_CLOSE=false
 ARTIFICIALLY_GENERATE_LOAD_FOR_TESTING=false
