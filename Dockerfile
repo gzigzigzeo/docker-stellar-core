@@ -5,7 +5,7 @@ FROM gzigzigzeo/docker-download-confd as confd
 
 FROM debian:jessie AS build
 
-ENV STELLAR_CORE_VERSION "0.6.3-391-708237b0"
+ENV STELLAR_CORE_VERSION "9.0.1-475-7ad53a57"
 ENV STELLAR_DEB_URL "https://s3.amazonaws.com/stellar.org/releases/stellar-core/stellar-core-${STELLAR_CORE_VERSION}_amd64.deb"
 
 RUN apt-get update && apt-get install -y curl git libpq-dev libsqlite3-dev libsasl2-dev postgresql-client vim zlib1g-dev && apt-get clean
