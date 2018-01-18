@@ -3,10 +3,10 @@ HTTP_PORT={{getv "/stellar/core/http/port"}}
 PEER_PORT={{getv "/stellar/core/peer/port"}}
 
 BUCKET_DIR_PATH="{{ getv "/stellar/core/base/path" }}/buckets"
+TMP_DIR_PATH="{{ getv "/stellar/core/base/path" }}/tmp"
 PUBLIC_HTTP_PORT=true # By default (false) accepts connection from localhost only, not our case (other container)
 HTTP_MAX_CLIENT=128
 COMMANDS=["ll?level=info"]
-PREFERRED_UPGRADE_DATETIME=2017-03-01T00:00:00Z
 NETWORK_PASSPHRASE="Public Global Stellar Network ; September 2015"
 TARGET_PEER_CONNECTIONS=8
 MAX_PEER_CONNECTIONS=12
@@ -42,11 +42,11 @@ NODE_NAMES=[
 NODE_IS_VALIDATOR=false
 DESIRED_MAX_TX_PER_LEDGER=300
 FAILURE_SAFETY=1
-UNSAFE_QUORUM=false
+UNSAFE_QUORUM=true
 
 CATCHUP_COMPLETE=false
-CATCHUP_RECENT=8192
-MAX_CONCURRENT_SUBPROCESSES=20
+CATCHUP_RECENT=512
+MAX_CONCURRENT_SUBPROCESSES=32
 RUN_STANDALONE=false
 MANUAL_CLOSE=false
 ARTIFICIALLY_GENERATE_LOAD_FOR_TESTING=false

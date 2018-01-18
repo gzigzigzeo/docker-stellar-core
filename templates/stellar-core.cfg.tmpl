@@ -3,9 +3,10 @@ HTTP_PORT={{getv "/stellar/core/http/port"}}
 PEER_PORT={{getv "/stellar/core/peer/port"}}
 
 BUCKET_DIR_PATH="{{ getv "/stellar/core/base/path" }}/buckets"
+TMP_DIR_PATH="{{ getv "/stellar/core/base/path" }}/tmp"
 PUBLIC_HTTP_PORT=true # By default (false) accepts connection from localhost only, not our case (other container)
 HTTP_MAX_CLIENT=128
-COMMANDS=["ll?level=info&dropcursor?id=HORIZON&maintenance?queue=true"]
+COMMANDS=["ll?level=info"]
 NETWORK_PASSPHRASE="Test SDF Network ; September 2015"
 TARGET_PEER_CONNECTIONS=8
 MAX_PEER_CONNECTIONS=12
