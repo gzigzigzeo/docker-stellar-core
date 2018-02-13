@@ -43,7 +43,7 @@ RUN apt-get update && apt-get -y --no-install-recommends install curl ca-certifi
 
 # Confd
 COPY --from=confd /usr/local/bin/confd /usr/local/bin/confd
-COPY templates /etc/confd/templates/
+RUN mkdir -p /etc/confd/templates/
 COPY conf.d /etc/confd/conf.d/
 
 # Installation

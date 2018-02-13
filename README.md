@@ -1,7 +1,5 @@
 # docker-stellar-core
 
-Docker image used for stellar-core Kubernetes setup.
-
-Substitute /etc/stellar-core.cfg with your own config.
-
-Confd is used for secrets interpolation, see templates/stellar-core.cfg.tmpl for details.
+```
+docker run -v $(PWD)/templates/stellar-core.testnet.cfg.tmpl:/etc/confd/templates/stellar-core.cfg.tmpl -t stellar-core
+```
